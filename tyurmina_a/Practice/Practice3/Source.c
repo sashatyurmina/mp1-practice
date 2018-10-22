@@ -17,7 +17,7 @@ void main()
 		int x = 1002;
 		int k = 0;
 		int n;
-		n = rand() % 1001;
+		n = (1000-1)/RAND_MAX*rand()+1;
 		printf("Введите число ");
 		while (n != x)
 		{
@@ -45,21 +45,26 @@ void main()
 		printf ("Введите загаданное число ");
 		scanf("%d", &n);
 		printf("Начинаем отгадывать: ");
-		a = rand() % 1001;
-		printf ("%d", x);
+		a = (1000 - 1) / RAND_MAX * rand() + 1;
+		printf("%d", a);
+		scanf ("%d", &x);
 		while (x != '=')
 		{
 			if (x == '>')
 			{
-				a = rand() % 1001; /*каким-то образом надо ограничить круг угадывания*/
+				a = (a - 1) / RAND_MAX * rand() + 1;; 
 				++k;
 			}
 			if (x == '<')
 			{
-				a = rand() % 1001; /*каким-то образом надо ограничить круг угадывания*/
+				a = (1000 - a) / RAND_MAX * rand() + a;; 
 				++k;
 			}
+			printf("%d", a);
+			scanf("%d", &x);
 		}
+		++k;
+		printf("Угадали");
+		printf("Количество попыток - %d ", &k);
 	}
-	
 }

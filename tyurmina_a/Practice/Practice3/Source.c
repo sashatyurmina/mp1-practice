@@ -17,7 +17,9 @@ void main()
 		int x = 1002;
 		int k = 0;
 		int n;
-		n = (1000-1)/RAND_MAX*rand()+1;
+		n = rand() % 1001;
+		if (n==0)
+			n = rand() % 1001;
 		printf("Введите число ");
 		while (n != x)
 		{
@@ -25,46 +27,46 @@ void main()
 			if (n > x)
 			{
 				printf("Загаданное число больше ");
-				++k;
 			}
 			if (n < x)
 			{
 				printf("загаданное число меньше ");
-				++k;
 			}
+			k++;
 		}
 		++k;
-		printf("Угадали");
-		printf("Количество попыток - %d ", &k);
+		printf("Угадали ");
+		printf(" Количество попыток - %d ", k);
 	}
-	else
+	if (a==2)
 	{
-		int n,a;
+		int n,b;
 		char x;
 		int k = 0;
 		printf ("Введите загаданное число ");
 		scanf("%d", &n);
 		printf("Начинаем отгадывать: ");
-		a = (1000 - 1) / RAND_MAX * rand() + 1;
-		printf("%d", a);
-		scanf ("%d", &x);
+		b = rand() % 1001;
+		if (b==0)
+			b = rand() % 1001;
+		printf("%d", b);
+		scanf ("%*c%c", &x);
 		while (x != '=')
 		{
 			if (x == '>')
 			{
-				a = (a - 1) / RAND_MAX * rand() + 1;; 
-				++k;
+				b = rand() * (1000 - 1) / RAND_MAX + 1;
 			}
 			if (x == '<')
 			{
-				a = (1000 - a) / RAND_MAX * rand() + a;; 
-				++k;
+				b = rand() * (1000-1) / RAND_MAX + 1; 
 			}
-			printf("%d", a);
-			scanf("%d", &x);
+			k++;
+			printf("%d", b);
+			scanf("%*c%c", &x);
 		}
 		++k;
-		printf("Угадали");
-		printf("Количество попыток - %d ", &k);
+		printf("Угадали ");
+		printf(" Количество попыток - %d ", k);
 	}
 }
